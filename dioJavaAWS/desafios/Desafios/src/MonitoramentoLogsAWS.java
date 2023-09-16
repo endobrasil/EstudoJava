@@ -56,31 +56,65 @@
  *                                                                          Lambda:1
  *                                                                          Maior:EC2
  *                                                                          Menor:Lambda
+ *
+ * https://acervolima.com/programa-java-para-contar-a-ocorrencia-de-cada-caractere-em-uma-string-usando-hashmap/
  */
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class MonitoramentoLogsAWS {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int quantidadeLogs = scanner.nextInt();
-
         scanner.nextLine(); // Limpar o buffer do scanner
 
         Map<String, Long> eventosPorServico = new HashMap<>();
         for (int i = 0; i < quantidadeLogs; i++) {
+            Long j =new Long(1);
             String[] parts = scanner.nextLine().split(",");
             String servico = parts[1];
-
             //TODO: Utilize o mapa para registrar/incrementar o serviço em questão.
-            eventosPorServico.put(servico, (long) i);
+            if(eventosPorServico.containsKey(servico)){
+                eventosPorServico.put(servico,eventosPorServico.get(servico)+1);
+            }else{
+                eventosPorServico.put(servico,j);
+            }
         }
+
+
 
         //TODO: Identifique no mapa os serviços com maior e menor quantidade de logs.
         //      Dica: Utilize Java Streams para tornar essa tarefa mais simples.
 
+        String servicoMaisFrequente = null;
+        Long maiorContagem = new Long(0);
+        for (Map.Entry<String, Long> entry : eventosPorServico.entrySet()) {
+            if (entry.getValue() > maiorContagem) {
+                maiorContagem = entry.getValue();
+                servicoMaisFrequente  = entry.getKey();
+            }
+        }
+
+        String servicoMenosFrequente = servicoMaisFrequente;
+        Long menorContagem = maiorContagem;
+        for (Map.Entry<String, Long> entry : eventosPorServico.entrySet()) {
+            if (entry.getValue() < menorContagem) {
+                menorContagem = entry.getValue();
+                servicoMenosFrequente  = entry.getKey();
+            }
+        }
+
+
+
+
         //TODO: Imprima a saída no padrão definido no enunciado deste desafio.
+        System.out.println("Eventos por servico:");
+        for (Map.Entry entry:eventosPorServico.entrySet()){
+            System.out.println(entry.getKey()+ ":"+entry.getValue());
+        }
+
+        System.out.println("Maior:"+servicoMaisFrequente);
+        System.out.println("Menor:"+servicoMenosFrequente);
     }
 }
