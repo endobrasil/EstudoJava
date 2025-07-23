@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Loga Grade - Plataforma de Carros Usados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #222;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+        th, td {
+            padding: 12px 8px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #eee;
+        }
+        tr:hover {
+            background: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Loga Grade</h1>
+        <p>Plataforma web de carros usados</p>
+    </header>
+    <div class="container">
+        <h2>Lista de Carros Disponíveis</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Ano</th>
+                    <th>Preço</th>
+                </tr>
+            </thead>
+            <template id="car-row-template">
+                <tr>
+                    <td class="car-marca"></td>
+                    <td class="car-modelo"></td>
+                    <td class="car-ano"></td>
+                    <td class="car-preco"></td>
+                </tr>
+            </template>
+
+            <tbody>
+                <tr>
+                    <td>Volkswagen</td>
+                    <td>Gol</td>
+                    <td>2018</td>
+                    <td>R$ 35.000</td>
+                </tr>
+                <tr>
+                    <td>Chevrolet</td>
+                    <td>Onix</td>
+                    <td>2020</td>
+                    <td>R$ 48.000</td>
+                </tr>
+                <tr>
+                    <td>Ford</td>
+                    <td>Ka</td>
+                    <td>2019</td>
+                    <td>R$ 32.500</td>
+                </tr>
+                <tr>
+                    <td>Fiat</td>
+                    <td>Argo</td>
+                    <td>2021</td>
+                    <td>R$ 52.000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
